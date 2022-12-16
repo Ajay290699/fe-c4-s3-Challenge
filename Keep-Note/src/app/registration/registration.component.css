@@ -1,0 +1,16 @@
+#form{
+    margin-top: 50px;
+    margin-left: 100px;
+    width: 600px;
+}
+.field{
+    width: 100%;
+}
+#reset{
+    background-color: palevioletred;
+    color: white;
+}
+#reset, #submit{
+    margin-top: 10px;
+    margin-left: 50px;
+}

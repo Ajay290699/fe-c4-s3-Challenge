@@ -1,0 +1,121 @@
+<form id="form" [formGroup]="registration" (ngSubmit)="onSubmit()">
+    <h1>Registration Form</h1>
+    <mat-form-field appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input formControlName="firstName" matInput type="text" [class.is-invalid]="firstName?.invalid">
+        <mat-error *ngIf="firstName?.errors?.['required']">
+            First Name is required
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Last Name</mat-label>
+        <input formControlName="lastName" matInput type="text" [class.is-invalid]="lastName?.invalid">
+        <mat-error *ngIf="lastName?.errors?.['required']">
+            Last Name required
+        </mat-error>
+        <mat-error *ngIf="lastName?.errors?.['minlength']">
+            Last Name should have minimum of 2 characters
+        </mat-error>
+    </mat-form-field><br>
+
+    <mat-form-field appearance="fill" class="field">
+        <mat-label>Email</mat-label>
+        <input formControlName="email" matInput type="email" [class.is-invalid]="email?.invalid">
+        <mat-error *ngIf="email?.errors?.['required']">
+            Email is required
+        </mat-error>
+        <mat-error *ngIf="email?.errors?.['checkIfGuestEmailsAreValid']">
+            Enter Valid email address
+        </mat-error>
+    </mat-form-field><br>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input formControlName="password" matInput type="text" [class.is-invalid]="password?.invalid">
+            <mat-error *ngIf="password?.errors?.['required']">
+                Password is required
+            </mat-error>
+            <mat-error *ngIf="password?.errors?.['pattern']">
+                Password should have min 8 letter password, with atleast a symbol, Upper and Lowercase letters and a number
+            </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Confirm Password</mat-label>
+        <input formControlName="confirmPassword" matInput type="text" [class.is-invalid]="confirmPassword?.invalid">
+        <mat-error *ngIf="confirmPassword?.errors?.['required']">
+            Confirm Password is required
+        </mat-error>
+        <label style="color: red;" *ngIf="registration?.errors?.['mustMatch']== true">
+            Password and Confirm Password should match
+        </label>
+    </mat-form-field><br>
+
+    <!-- <mat-form-field appearance="fill" class="field"> -->
+        <mat-label>Gender</mat-label>
+        <mat-radio-group formControlName="gender">
+            <mat-radio-button value="Male">Male</mat-radio-button>
+            <mat-radio-button value="Female">Female</mat-radio-button>
+        </mat-radio-group>
+    <br>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Age</mat-label>
+        <input formControlName="age" matInput type="number" [class.is-invalid]="age?.invalid">
+        <mat-error *ngIf="age?.errors?.['required']">
+            Age is required
+        </mat-error>
+        <mat-error *ngIf="age?.errors?.['min']">
+            Age must be 18 years and above
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Phone Number</mat-label>
+        <input formControlName="phone" matInput type="tel" [class.is-invalid]="phone?.invalid">
+        <mat-error *ngIf="phone?.errors?.['required']">
+            should not be blank
+        </mat-error>
+        <mat-error *ngIf="phone?.errors?.['pattern']">
+            phone number should be stated from 7 8 9 and should have 10 digits
+        </mat-error>
+    </mat-form-field><br>
+
+
+    <div formGroupName="address">
+    <mat-form-field appearance="fill" class="field">
+        <mat-label>street</mat-label>
+        <input matInput type="text" formControlName="street" matInput type="text" [class.is-invalid]="street?.invalid">
+        <mat-error *ngIf="street?.errors?.['required']">
+            street is required
+        </mat-error>
+    </mat-form-field><br>
+
+    <mat-form-field appearance="fill">
+        <mat-label>City</mat-label>
+        <input formControlName="city" matInput type="text" [class.is-invalid]="city?.invalid">
+        <mat-error *ngIf="city?.errors?.['required']">
+            city is required
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>State</mat-label>
+        <input formControlName="state" matInput type="text" [class.is-invalid]="state?.invalid">
+        <mat-error *ngIf="state?.errors?.['required']">
+            state is required
+        </mat-error>
+    </mat-form-field><br>
+
+    <mat-form-field appearance="fill" class="field">
+        <mat-label>ZipCode</mat-label>
+        <input formControlName="zipcode" matInput type="number" [class.is-invalid]="zipcode?.invalid">
+        <mat-error *ngIf="zipcode?.errors?.['required']">
+            Zip code is required
+        </mat-error>
+        <mat-error *ngIf="zipcode?.errors?.['pattern']">
+            Zip code should have 5-digit number
+        </mat-error>
+    </mat-form-field>
+    </div><br>
+
+    <button mat-button id="reset" type="reset">Reset</button>
+    <button mat-button id="submit" type="submit" [disabled]="!registration.valid" (click)="saveUser()">Submit</button>
+</form>

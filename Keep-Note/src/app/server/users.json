@@ -1,0 +1,27 @@
+{
+  "users": [
+    {
+      "id": 1
+    },
+    {
+      "id": 2
+    },
+    {
+      "firstName": "Ajay",
+      "lastName": "Chavan",
+      "password": "Ajay@123",
+      "confirmPassword": "Ajay@123",
+      "email": "ajayc9838@gmail.com",
+      "gender": "Male",
+      "age": 23,
+      "phone": "7045829636",
+      "address": {
+        "street": "dgu",
+        "city": "Navi Mumbai",
+        "state": "Maharashtra",
+        "zipcode": 40005
+      },
+      "id": 3
+    }
+  ]
+}
